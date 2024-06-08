@@ -1,7 +1,7 @@
 {
   "name": "tp5-roserojohan-backend",
   "version": "1.0.0",
-  "description": "trabajo practico Backend",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

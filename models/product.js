@@ -8,4 +8,4 @@ const ProductSchema = new Schema({
     stock: { type: Number, required: true },
     destacado: { type: Boolean, required: true }
 });
-module.exports = mongoose.models.Agente || mongoose.model('Product', ProductSchema);
+module.exports = mongoose.models.Product || mongoose.model('Product', ProductSchema);
