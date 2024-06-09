@@ -52,7 +52,7 @@ productCtrl.editProduct = async (req, res) => {
         })
     }
 }
-module.exports =productCtrl;
+module.exports = productCtrl;
 
 /* Dar de alta un Producto (POST)
 - Recuperar TODOS los productos (GET)
