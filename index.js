@@ -8,7 +8,8 @@ let app = express();
 app.use(express.json());
 app.use(cors({ origin: 'http://localhost:4200' }));
 //Cargamos el modulo de direccionamiento de rutas
-app.use('/api/product',require('./routes/product.route'));
+app.use('/api/product', require('./routes/product.route'));
+app.use('/api/transaction', require('./routes/transaction.route'));
 
 //setting
 app.set('port', process.env.PORT || 3000);
