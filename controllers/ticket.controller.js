@@ -54,7 +54,7 @@ ticketCtrl.updateTicket = async (req, res) => {
     }
 }
 
-ticketCtrl.getByCategory = async (req, res) => {
+ticketCtrl. getByCategory = async (req, res) => {
     let category = req.params.category;
     if (category === 'l') {
         let tickets = await Ticket.find({ categoriaEspectador: 'local' });
