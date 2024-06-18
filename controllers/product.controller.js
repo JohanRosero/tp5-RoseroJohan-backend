@@ -14,12 +14,12 @@ productCtrl.createProduct = async (req, res) => {
     try {
         await product.save();
         res.status(200).json({
-            'status': 'success',
+            'status': '0',
             'message': 'Product created successfully'
         });
     } catch (error) {
         res.status(400).json({
-            'status': '0',
+            'status': '1',
             'message': 'Error creating product'
         });
     }
@@ -41,12 +41,12 @@ productCtrl.deleteProduct = async (req, res) => {
 productCtrl.editProduct = async (req, res) => {
     try {
         await Product.findByIdAndUpdate(req.params.id, req.body);
-        res.status(200).json({
+        return res.status(200).json({
             'status': '0',
             'message': 'Product updated successfully'
         });
     } catch (error) {
-        res.status(400).json({
+        return res.status(400).json({
             'status': '1',
             'message': 'Error updating product'
         })
