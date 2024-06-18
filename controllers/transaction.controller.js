@@ -6,10 +6,25 @@ transactionCtrl.getTransactionByCurrency = async (req, res) => {
         $or: [
             { monedaOrigen: req.params.currency },
             { monedaDestino: req.params.currency }
-          ]
+        ]
     });
     res.json(transactions);
 }
+transactionCtrl.getTransactionByOriginDestiny = async (req, res) => {
+    try {
+        let transactions = await Transaction.find({
+            $and: [
+                { monedaOrigen: req.query.origin },
+                { monedaDestino: req.query.destiny }
+            ]
+        });
+        res.json(transactions);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}
+
+
 transactionCtrl.getTransactions = async (req, res) => {
     let transactions = await Transaction.find();
     res.json(transactions);

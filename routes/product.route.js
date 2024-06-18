@@ -8,7 +8,7 @@ router.post('/', productCtrl.createProduct);
 router.get('/', productCtrl.getProducts);
 router.delete('/:id', productCtrl.deleteProduct);
 router.put('/:id', productCtrl.editProduct);
-router.get('/:destacado', productCtrl.getProminentProducts);
+router.get('/prominets', productCtrl.getProminentProducts);
 
 //exportamos el modulo de rutas
 module.exports = router;
