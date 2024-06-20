@@ -4,12 +4,20 @@ const Ticket = require('../models/ticket');
 const ticketCtrl = {};
 
 ticketCtrl.getTickets = async (req, res) => {
-    let tickets = await Ticket.find().populate('espectador');
+    let tickets = await Ticket.find()
+        .populate('espectador')
+        .populate('tipoCategoria')
+        .exec();
     res.json(tickets);
 }
 
 ticketCtrl.createTicket = async (req, res) => {
     let ticket = new Ticket(req.body);
+    if (ticket.categoriaEspectador == 'l') {
+        ticket.categoriaEspectador = 'local';
+    } else if (ticket.categoriaEspectador == 'e') {
+        ticket.categoriaEspectador = 'extranjero';
+    };
     try {
         await ticket.save();
         res.status(200).json({
@@ -57,10 +65,16 @@ ticketCtrl.updateTicket = async (req, res) => {
 ticketCtrl.getByCategory = async (req, res) => {
     let category = req.params.category;
     if (category === 'l') {
-        let tickets = await Ticket.find({ categoriaEspectador: 'local' });
+        let tickets = await Ticket.find({ categoriaEspectador: 'local' })
+        .populate('espectador')
+        .populate('tipoCategoria')
+        .exec();
         res.status(200).json(tickets);
     } else if (category === 'e') {
-        let tickets = await Ticket.find({ categoriaEspectador: 'extranjero' });
+        let tickets = await Ticket.find({ categoriaEspectador: 'extranjero' })
+        .populate('espectador')
+        .populate('tipoCategoria')
+        .exec();
         res.status(200).json(tickets);
     } else {
         res.status(400).json({

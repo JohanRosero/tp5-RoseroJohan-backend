@@ -12,6 +12,7 @@ app.use('/api/product', require('./routes/product.route'));
 app.use('/api/transaction', require('./routes/transaction.route'));
 app.use('/api/spectator', require('./routes/spectator.route'));
 app.use('/api/ticket', require('./routes/ticket.route'));
+app.use('/api/categoria', require('./routes/categoria.route'));
 
 //setting
 app.set('port', process.env.PORT || 3000);
